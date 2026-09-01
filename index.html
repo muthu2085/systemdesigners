@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Designers | Electronic Engineering & Health Monitoring Products</title>
+    <meta
+      name="description"
+      content="System Designers is a Coimbatore based electronic engineering startup creating health monitoring, embedded, IoT, PCB, and electronic product solutions."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+      :root {
+        --ink: #ecf7f4;
+        --muted: #99aaa8;
+        --soft: rgba(236, 247, 244, 0.72);
+        --bg: #06100f;
+        --bg-2: #0a1816;
+        --panel: rgba(11, 24, 22, 0.78);
+        --panel-2: rgba(16, 34, 31, 0.9);
+        --line: rgba(236, 247, 244, 0.12);
+        --line-strong: rgba(236, 247, 244, 0.22);
+        --mint: #4fffc2;
+        --cyan: #58d6ff;
+        --lime: #cbff6b;
+        --amber: #ffc95a;
+        --rose: #ff7e91;
+        --deep: #020807;
+        --shadow: rgba(0, 0, 0, 0.36);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 18% 8%, rgba(79, 255, 194, 0.16), transparent 25%),
+          radial-gradient(circle at 78% 18%, rgba(88, 214, 255, 0.13), transparent 28%),
+          linear-gradient(145deg, var(--bg), #071412 45%, #111712);
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -3;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(236, 247, 244, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(236, 247, 244, 0.035) 1px, transparent 1px);
+        background-size: 36px 36px;
+        mask-image: linear-gradient(to bottom, black, transparent 82%);
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+        opacity: 0.2;
+        background-image:
+          linear-gradient(90deg, transparent 0 8%, rgba(79, 255, 194, 0.26) 8% 8.2%, transparent 8.2% 100%),
+          linear-gradient(0deg, transparent 0 15%, rgba(88, 214, 255, 0.22) 15% 15.2%, transparent 15.2% 100%);
+        background-size: 210px 170px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        border-bottom: 1px solid rgba(236, 247, 244, 0.08);
+        background: rgba(6, 16, 15, 0.72);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+        gap: 22px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        min-width: max-content;
+      }
+
+      .brand-mark {
+        position: relative;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(79, 255, 194, 0.4);
+        border-radius: 8px;
+        background:
+          linear-gradient(90deg, transparent 47%, rgba(79, 255, 194, 0.45) 47% 53%, transparent 53%),
+          linear-gradient(0deg, transparent 47%, rgba(88, 214, 255, 0.42) 47% 53%, transparent 53%),
+          linear-gradient(135deg, rgba(79, 255, 194, 0.16), rgba(255, 201, 90, 0.1));
+        box-shadow: inset 0 0 22px rgba(79, 255, 194, 0.18), 0 0 24px rgba(79, 255, 194, 0.1);
+      }
+
+      .brand-mark::before,
+      .brand-mark::after {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--mint);
+        box-shadow: 0 0 14px var(--mint);
+      }
+
+      .brand-mark::before {
+        top: 8px;
+        right: 8px;
+      }
+
+      .brand-mark::after {
+        left: 8px;
+        bottom: 8px;
+        background: var(--cyan);
+        box-shadow: 0 0 14px var(--cyan);
+      }
+
+      .brand-text strong {
+        display: block;
+        font-family: "Space Grotesk", Inter, sans-serif;
+        color: var(--ink);
+        font-size: 1.05rem;
+        letter-spacing: 0.01em;
+      }
+
+      .brand-text span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        color: rgba(236, 247, 244, 0.76);
+        font-size: 0.92rem;
+      }
+
+      .nav-links a {
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--mint);
+      }
+
+      .nav-phone {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 16px;
+        border: 1px solid rgba(79, 255, 194, 0.3);
+        border-radius: 6px;
+        color: var(--deep);
+        background: var(--mint);
+        font-weight: 800;
+        font-size: 0.86rem;
+        box-shadow: 0 14px 32px rgba(79, 255, 194, 0.18);
+      }
+
+      main {
+        overflow: hidden;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100svh;
+        display: grid;
+        align-items: center;
+        padding: 116px 0 44px;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.34;
+        filter: saturate(1.05) contrast(1.05);
+      }
+
+      .hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(6, 16, 15, 0.95), rgba(6, 16, 15, 0.62) 50%, rgba(6, 16, 15, 0.92)),
+          linear-gradient(0deg, #06100f 0%, transparent 30%, transparent 76%, rgba(6, 16, 15, 0.78));
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.02fr) minmax(330px, 0.78fr);
+        align-items: center;
+        gap: 48px;
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--mint);
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .kicker::before {
+        content: "";
+        width: 34px;
+        height: 1px;
+        background: linear-gradient(90deg, var(--mint), transparent);
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Space Grotesk", Inter, sans-serif;
+      }
+
+      h1 {
+        margin: 18px 0 0;
+        max-width: 820px;
+        font-size: clamp(3.2rem, 4vw, 4rem);
+        line-height: 0.88;
+        letter-spacing: -0.09em;
+      }
+
+      .hero-title-accent {
+        color: transparent;
+        background: linear-gradient(115deg, var(--soft), var(--mint), var(--amber));
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      .typed-title {
+        position: relative;
+      }
+
+      .typed-title::after {
+        content: "";
+        display: inline-block;
+        width: 0.08em;
+        height: 0.78em;
+        margin-left: 0.08em;
+        background: var(--mint);
+        box-shadow: 0 0 16px rgba(79, 255, 194, 0.8);
+        transform: translateY(0.08em);
+        animation: cursorBlink 0.85s steps(1) infinite;
+      }
+
+      .typed-title.is-typed::after {
+        opacity: 0;
+        animation: none;
+      }
+
+      @keyframes cursorBlink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .hero-copy {
+        margin: 26px 0 0;
+        max-width: 660px;
+        color: rgba(236, 247, 244, 0.78);
+        font-size: clamp(1rem, 1.4vw, 1.2rem);
+        line-height: 1.75;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px;
+        margin-top: 34px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 0 20px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: var(--mint);
+        color: #03100d;
+        box-shadow: 0 18px 40px rgba(79, 255, 194, 0.2);
+      }
+
+      .btn-ghost {
+        border-color: rgba(236, 247, 244, 0.22);
+        background: rgba(236, 247, 244, 0.04);
+        color: var(--ink);
+      }
+
+      .hero-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        max-width: 660px;
+        margin-top: 40px;
+      }
+
+      .metric {
+        min-height: 104px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(6, 16, 15, 0.58);
+      }
+
+      .metric strong {
+        display: block;
+        font-family: "Space Grotesk", Inter, sans-serif;
+        color: var(--ink);
+        font-size: 1.4rem;
+        line-height: 1;
+      }
+
+      .metric span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.45;
+      }
+
+      .diagnostic {
+        position: relative;
+        min-height: 530px;
+        border: 1px solid rgba(236, 247, 244, 0.14);
+        border-radius: 12px;
+        background:
+          linear-gradient(145deg, rgba(15, 34, 31, 0.92), rgba(8, 21, 19, 0.78)),
+          radial-gradient(circle at 70% 20%, rgba(88, 214, 255, 0.16), transparent 30%);
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.38);
+        overflow: hidden;
+      }
+
+      .diagnostic::before {
+        content: "";
+        position: absolute;
+        inset: 18px;
+        border: 1px solid rgba(79, 255, 194, 0.18);
+        border-radius: 8px;
+        pointer-events: none;
+      }
+
+      .scope-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 28px 28px 0;
+        color: var(--muted);
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .live-dot {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--mint);
+      }
+
+      .live-dot::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--mint);
+        box-shadow: 0 0 18px var(--mint);
+      }
+
+      .chip-board {
+        position: relative;
+        width: min(76%, 330px);
+        aspect-ratio: 1;
+        margin: 54px auto 0;
+        border: 1px solid rgba(79, 255, 194, 0.25);
+        border-radius: 14px;
+        background:
+          linear-gradient(90deg, transparent 49%, rgba(79, 255, 194, 0.28) 49% 51%, transparent 51%),
+          linear-gradient(0deg, transparent 49%, rgba(88, 214, 255, 0.24) 49% 51%, transparent 51%),
+          radial-gradient(circle at center, rgba(79, 255, 194, 0.18), transparent 42%);
+      }
+
+      .chip {
+        position: absolute;
+        inset: 27%;
+        border: 1px solid rgba(236, 247, 244, 0.2);
+        border-radius: 10px;
+        background:
+          linear-gradient(90deg, rgba(236, 247, 244, 0.08) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(236, 247, 244, 0.08) 1px, transparent 1px),
+          linear-gradient(145deg, #0a1f1b, #102b27);
+        background-size: 14px 14px, 14px 14px, auto;
+        box-shadow: inset 0 0 30px rgba(79, 255, 194, 0.12), 0 0 34px rgba(79, 255, 194, 0.12);
+      }
+
+      .chip::before,
+      .chip::after {
+        content: "";
+        position: absolute;
+        inset: -18px 22%;
+        background:
+          linear-gradient(90deg, rgba(79, 255, 194, 0.6) 0 2px, transparent 2px 15px);
+        background-size: 15px 100%;
+      }
+
+      .chip::after {
+        inset: 22% -18px;
+        background:
+          linear-gradient(0deg, rgba(88, 214, 255, 0.58) 0 2px, transparent 2px 15px);
+        background-size: 100% 15px;
+      }
+
+      .pulse-ring {
+        position: absolute;
+        inset: 14%;
+        border: 1px solid rgba(79, 255, 194, 0.32);
+        border-radius: 50%;
+        animation: pulseRing 3.2s ease-in-out infinite;
+      }
+
+      .pulse-ring.two {
+        inset: 4%;
+        animation-delay: 1.3s;
+        border-color: rgba(88, 214, 255, 0.22);
+      }
+
+      @keyframes pulseRing {
+        0%,
+        100% {
+          transform: scale(0.92);
+          opacity: 0.35;
+        }
+        50% {
+          transform: scale(1.08);
+          opacity: 0.9;
+        }
+      }
+
+      .readout {
+        position: absolute;
+        left: 26px;
+        right: 26px;
+        bottom: 26px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .readout-item {
+        padding: 14px 12px;
+        border: 1px solid rgba(236, 247, 244, 0.12);
+        border-radius: 8px;
+        background: rgba(2, 8, 7, 0.38);
+      }
+
+      .readout-item span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .readout-item strong {
+        display: block;
+        margin-top: 8px;
+        color: var(--ink);
+        font-family: "Space Grotesk", Inter, sans-serif;
+        font-size: 1.15rem;
+      }
+
+      .trace {
+        position: absolute;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--mint), transparent);
+        box-shadow: 0 0 16px rgba(79, 255, 194, 0.75);
+        animation: traceFlow 3.8s linear infinite;
+      }
+
+      .trace.t1 {
+        top: 31%;
+        left: 10%;
+        width: 34%;
+      }
+
+      .trace.t2 {
+        top: 47%;
+        right: 8%;
+        width: 34%;
+        animation-delay: 0.8s;
+      }
+
+      .trace.t3 {
+        top: 66%;
+        left: 13%;
+        width: 42%;
+        animation-delay: 1.6s;
+      }
+
+      @keyframes traceFlow {
+        0% {
+          transform: translateX(-18px);
+          opacity: 0.1;
+        }
+        50% {
+          opacity: 0.9;
+        }
+        100% {
+          transform: translateX(18px);
+          opacity: 0.1;
+        }
+      }
+
+      section {
+        position: relative;
+        padding: 96px 0;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.55fr) minmax(260px, 0.45fr);
+        align-items: end;
+        gap: 30px;
+        margin-bottom: 34px;
+      }
+
+      .section-head h2 {
+        margin: 10px 0 0;
+        font-size: clamp(2.1rem, 4vw, 4.5rem);
+        line-height: 0.98;
+        letter-spacing: -0.045em;
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .intro-band {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: rgba(236, 247, 244, 0.025);
+      }
+
+      .intro-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.42fr) minmax(260px, 0.42fr);
+        gap: 44px;
+        align-items: center;
+      }
+
+      .intro-copy h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 4rem);
+        line-height: 1;
+        letter-spacing: -0.045em;
+      }
+
+      .intro-copy p {
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.8;
+      }
+
+      .intro-media {
+        position: relative;
+        min-height: 440px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--panel);
+      }
+
+      .intro-media img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 112%;
+        object-fit: cover;
+        transform: translateY(-6%);
+        opacity: 0.78;
+      }
+
+      .intro-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(0deg, rgba(2, 8, 7, 0.82), transparent 58%),
+          linear-gradient(90deg, rgba(6, 16, 15, 0.38), transparent);
+      }
+
+      .intro-media-label {
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        z-index: 2;
+        padding: 16px;
+        border: 1px solid rgba(236, 247, 244, 0.14);
+        border-radius: 8px;
+        background: rgba(2, 8, 7, 0.54);
+        backdrop-filter: blur(10px);
+      }
+
+      .intro-media-label span {
+        display: block;
+        color: var(--mint);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .intro-media-label strong {
+        display: block;
+        margin-top: 8px;
+        font-family: "Space Grotesk", Inter, sans-serif;
+        font-size: 1.25rem;
+        line-height: 1.18;
+      }
+
+      .focus-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .focus-pill {
+        min-height: 74px;
+        padding: 16px 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(6, 16, 15, 0.46);
+      }
+
+      .focus-pill strong {
+        display: block;
+        color: var(--ink);
+      }
+
+      .focus-pill span {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .services-area {
+        padding-bottom: 120px;
+      }
+
+      .services-slider-shell {
+        width: min(1420px, calc(100% - 20px));
+        margin: 0 auto;
+        overflow: visible;
+      }
+
+      .services-swiper {
+        overflow: visible;
+        padding: 14px 0 54px;
+      }
+
+      .service-slide {
+        position: relative;
+        min-height: 540px;
+        border: 1px solid rgba(236, 247, 244, 0.14);
+        border-radius: 8px;
+        overflow: hidden;
+        background: #0b1816;
+        transform: scale(0.92);
+        opacity: 0.56;
+        transition: transform 0.45s ease, opacity 0.45s ease;
+      }
+
+      .service-slide.swiper-slide-active {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      .service-slide img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 112%;
+        object-fit: cover;
+        opacity: 0.68;
+        transform: translateY(-6%);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+
+      .service-slide::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(3, 10, 9, 0.9), rgba(3, 10, 9, 0.3) 55%, rgba(3, 10, 9, 0.82)),
+          linear-gradient(0deg, rgba(3, 10, 9, 0.94), transparent 62%);
+      }
+
+      .service-content {
+        position: absolute;
+        inset: auto 0 0;
+        z-index: 2;
+        padding: clamp(24px, 5vw, 54px);
+      }
+
+      .service-index {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(79, 255, 194, 0.35);
+        border-radius: 50%;
+        color: var(--mint);
+        font-weight: 800;
+      }
+
+      .service-slide h3 {
+        max-width: 720px;
+        margin: 18px 0 0;
+        font-size: clamp(2rem, 4.8vw, 5rem);
+        line-height: 0.92;
+        letter-spacing: -0.05em;
+      }
+
+      .service-slide p {
+        max-width: 640px;
+        margin: 18px 0 0;
+        color: rgba(236, 247, 244, 0.76);
+        line-height: 1.75;
+      }
+
+      .service-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 22px;
+      }
+
+      .service-tags span {
+        padding: 8px 10px;
+        border: 1px solid rgba(236, 247, 244, 0.15);
+        border-radius: 999px;
+        color: rgba(236, 247, 244, 0.82);
+        background: rgba(236, 247, 244, 0.05);
+        font-size: 0.78rem;
+      }
+
+      .swiper-control-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1180px, calc(100% - 40px));
+        margin: -28px auto 0;
+      }
+
+      .swiper-pagination {
+        position: static;
+        width: auto;
+      }
+
+      .swiper-pagination-bullet {
+        width: 28px;
+        height: 3px;
+        border-radius: 999px;
+        background: rgba(236, 247, 244, 0.38);
+        opacity: 1;
+      }
+
+      .swiper-pagination-bullet-active {
+        background: var(--mint);
+      }
+
+      .slider-buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .slider-button {
+        position: static;
+        width: 46px;
+        height: 46px;
+        margin: 0;
+        border: 1px solid rgba(236, 247, 244, 0.18);
+        border-radius: 50%;
+        color: var(--ink);
+        background: rgba(236, 247, 244, 0.06);
+      }
+
+      .slider-button::after {
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      .industry-section {
+        background:
+          linear-gradient(180deg, rgba(236, 247, 244, 0.025), transparent),
+          linear-gradient(90deg, rgba(79, 255, 194, 0.05), transparent 42%, rgba(255, 201, 90, 0.04));
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .industry-grid {
+        display: grid;
+        grid-template-columns: 0.78fr 1.1fr;
+        gap: 22px;
+        align-items: stretch;
+      }
+
+      .industry-tabs {
+        display: grid;
+        gap: 10px;
+      }
+
+      .industry-tab {
+        width: 100%;
+        min-height: 92px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        text-align: left;
+        color: var(--muted);
+        background: rgba(6, 16, 15, 0.44);
+        cursor: pointer;
+        transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+      }
+
+      .industry-tab:hover,
+      .industry-tab.active {
+        transform: translateX(6px);
+        border-color: rgba(79, 255, 194, 0.42);
+        background: rgba(79, 255, 194, 0.08);
+        color: var(--ink);
+      }
+
+      .industry-tab span {
+        display: block;
+        color: var(--mint);
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .industry-tab strong {
+        display: block;
+        margin-top: 7px;
+        font-family: "Space Grotesk", Inter, sans-serif;
+        font-size: 1.26rem;
+        line-height: 1.1;
+      }
+
+      .industry-display {
+        position: relative;
+        min-height: 580px;
+        border: 1px solid rgba(236, 247, 244, 0.14);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--panel);
+      }
+
+      .industry-display img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 112%;
+        object-fit: cover;
+        opacity: 0.65;
+        transform: translateY(-6%);
+        transition: opacity 0.25s ease;
+      }
+
+      .industry-display::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgba(2, 8, 7, 0.93), transparent 65%);
+      }
+
+      .industry-copy {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        padding: clamp(24px, 4.5vw, 48px);
+      }
+
+      .industry-copy span {
+        color: var(--amber);
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .industry-copy h3 {
+        max-width: 620px;
+        margin: 12px 0 0;
+        font-size: clamp(2rem, 4vw, 4rem);
+        line-height: 0.96;
+        letter-spacing: -0.045em;
+      }
+
+      .industry-copy p {
+        max-width: 620px;
+        margin: 16px 0 0;
+        color: rgba(236, 247, 244, 0.74);
+        line-height: 1.75;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .product-card {
+        position: relative;
+        min-height: 340px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--panel);
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 218px;
+        object-fit: cover;
+        opacity: 0.78;
+        transform: translateY(-5%);
+      }
+
+      .product-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(180deg, transparent 34%, rgba(2, 8, 7, 0.95));
+      }
+
+      .product-card-content {
+        position: relative;
+        padding: 20px;
+      }
+
+      .product-card h3 {
+        margin: 0;
+        font-size: 1.35rem;
+      }
+
+      .product-card p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.65;
+        font-size: 0.95rem;
+      }
+
+      .founder-section {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background:
+          radial-gradient(circle at 8% 20%, rgba(255, 201, 90, 0.1), transparent 24%),
+          rgba(236, 247, 244, 0.025);
+      }
+
+      .founder-grid {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.42fr) minmax(0, 0.78fr);
+        gap: 44px;
+        align-items: center;
+      }
+
+      .founder-visual {
+        position: relative;
+        min-height: 420px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        background:
+          linear-gradient(145deg, rgba(79, 255, 194, 0.09), rgba(255, 201, 90, 0.08)),
+          #0b1816;
+      }
+
+      .portrait-symbol {
+        position: absolute;
+        inset: 44px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(236, 247, 244, 0.13);
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 50% 36%, rgba(236, 247, 244, 0.1) 0 16%, transparent 16.3%),
+          radial-gradient(circle at 50% 72%, rgba(236, 247, 244, 0.1) 0 28%, transparent 28.4%);
+      }
+
+      .portrait-symbol::before {
+        content: "RK";
+        display: grid;
+        place-items: center;
+        width: 120px;
+        height: 120px;
+        border: 1px solid rgba(79, 255, 194, 0.36);
+        border-radius: 50%;
+        color: var(--mint);
+        font-family: "Space Grotesk", Inter, sans-serif;
+        font-size: 2.4rem;
+        font-weight: 700;
+        background: rgba(2, 8, 7, 0.35);
+        box-shadow: 0 0 60px rgba(79, 255, 194, 0.14);
+      }
+
+      .founder-photo {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 112%;
+        object-fit: cover;
+        object-position: center top;
+        opacity: 0.82;
+        transform: translateY(-6%);
+      }
+
+      .founder-visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(0deg, rgba(2, 8, 7, 0.86), transparent 58%),
+          linear-gradient(90deg, rgba(6, 16, 15, 0.46), transparent);
+        pointer-events: none;
+      }
+
+      .founder-label {
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        padding: 16px;
+        border: 1px solid rgba(236, 247, 244, 0.13);
+        border-radius: 8px;
+        background: rgba(2, 8, 7, 0.58);
+        backdrop-filter: blur(10px);
+      }
+
+      .founder-label strong,
+      .founder-copy strong {
+        display: block;
+      }
+
+      .founder-label span {
+        color: var(--muted);
+      }
+
+      .founder-copy h2 {
+        margin: 10px 0 0;
+        font-size: clamp(2.3rem, 4.6vw, 4.8rem);
+        line-height: 0.96;
+        letter-spacing: -0.05em;
+      }
+
+      .founder-copy p {
+        margin: 22px 0 0;
+        color: var(--muted);
+        line-height: 1.85;
+      }
+
+      .quote-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .quote-bar span {
+        padding: 10px 12px;
+        border: 1px solid rgba(79, 255, 194, 0.22);
+        border-radius: 999px;
+        color: var(--soft);
+        background: rgba(79, 255, 194, 0.055);
+        font-size: 0.86rem;
+      }
+
+      .contact-section {
+        padding-bottom: 42px;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(300px, 0.52fr);
+        gap: 18px;
+      }
+
+      .contact-panel,
+      .gst-panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(6, 16, 15, 0.58);
+      }
+
+      .contact-panel {
+        padding: clamp(24px, 4vw, 42px);
+      }
+
+      .contact-panel h2 {
+        margin: 0;
+        max-width: 800px;
+        font-size: clamp(2.2rem, 4.8vw, 5rem);
+        line-height: 0.94;
+        letter-spacing: -0.05em;
+      }
+
+      .contact-panel p {
+        margin: 22px 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .contact-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .gst-panel {
+        display: grid;
+        align-content: stretch;
+        overflow: hidden;
+      }
+
+      .info-row {
+        padding: 22px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .info-row:last-child {
+        border-bottom: 0;
+      }
+
+      .info-row span {
+        display: block;
+        color: var(--mint);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .info-row strong,
+      .info-row address {
+        display: block;
+        margin-top: 8px;
+        color: var(--ink);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.55;
+      }
+
+      footer {
+        padding: 28px 0 38px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        border-top: 1px solid var(--line);
+        padding-top: 24px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(36px);
+      }
+
+      .motion-card,
+      .focus-pill,
+      .metric,
+      .product-card,
+      .industry-tab,
+      .readout-item,
+      .info-row {
+        will-change: transform;
+      }
+
+      @media (max-width: 980px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-grid,
+        .section-head,
+        .intro-grid,
+        .industry-grid,
+        .founder-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .diagnostic {
+          min-height: 500px;
+        }
+
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .container {
+          width: min(100% - 28px, 1180px);
+        }
+
+        .nav {
+          min-height: 68px;
+        }
+
+        .brand-text span {
+          display: none;
+        }
+
+        .nav-phone {
+          min-height: 38px;
+          padding: 0 12px;
+          font-size: 0.78rem;
+        }
+
+        .hero {
+          padding-top: 96px;
+        }
+
+        h1 {
+          font-size: clamp(2.65rem, 16vw, 4.4rem);
+        }
+
+        .hero-metrics,
+        .readout {
+          grid-template-columns: 1fr;
+        }
+
+        .diagnostic {
+          min-height: 570px;
+        }
+
+        .readout {
+          position: static;
+          margin: 34px 18px 18px;
+        }
+
+        .service-slide {
+          min-height: 520px;
+        }
+
+        .industry-display {
+          min-height: 500px;
+        }
+
+        section {
+          padding: 72px 0;
+        }
+
+        .swiper-control-row {
+          width: min(100% - 28px, 1180px);
+        }
+
+        .footer-row {
+          display: grid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#top" aria-label="System Designers home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">
+            <strong>System Designers</strong>
+            <span>Electronic Engineering</span>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#industries">Industries</a>
+          <a href="#products">Products</a>
+          <a href="#founder">Founder</a>
+        </nav>
+
+        <a class="nav-phone" href="tel:+919597804627">+91 95978 04627</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-bg" aria-hidden="true">
+          <img
+            class="parallax-img"
+            src="img/electronic-solution.png"
+            alt=""
+          />
+        </div>
+
+        <div class="container hero-grid">
+          <div class="hero-copy-block">
+            <div class="kicker reveal">Electronic product startup</div>
+            <h1 class="reveal typed-title hero-title-accent" data-type-text="Electronic services and smart products for healthier living.">
+              Smart Electronic products for healthier living.
+            </h1>
+            <p class="hero-copy reveal">
+              System Designers creates electronic engineering solutions and health monitoring products
+              that connect sensors, circuits, firmware, and caring product thinking into practical
+              devices for everyday life.
+            </p>
+
+            <div class="hero-actions reveal">
+              <a class="btn btn-primary" href="#contact">Start a Project</a>
+              <a class="btn btn-ghost" href="#services">Explore Services</a>
+            </div>
+
+            <div class="hero-metrics reveal">
+              <div class="metric">
+                <strong>25+</strong>
+                <span>Years of education led community insight</span>
+              </div>
+              <div class="metric">
+                <strong>PCB</strong>
+                <span>Design, prototyping, testing and assembly support</span>
+              </div>
+              <div class="metric">
+                <strong>IoT</strong>
+                <span>Connected products for monitoring and care</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="diagnostic reveal" aria-label="Animated health monitoring circuit visual">
+            <div class="scope-top">
+              <span>Bio-signal interface</span>
+              <span class="live-dot">Live</span>
+            </div>
+            <div class="trace t1"></div>
+            <div class="trace t2"></div>
+            <div class="trace t3"></div>
+            <div class="chip-board">
+              <span class="pulse-ring"></span>
+              <span class="pulse-ring two"></span>
+              <span class="chip"></span>
+            </div>
+            <div class="readout">
+              <div class="readout-item">
+                <span>Sensor</span>
+                <strong>Ready</strong>
+              </div>
+              <div class="readout-item">
+                <span>Signal</span>
+                <strong>Stable</strong>
+              </div>
+              <div class="readout-item">
+                <span>Care</span>
+                <strong>Active</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="intro-band">
+        <div class="container intro-grid">
+          <div class="intro-copy reveal">
+            <div class="kicker">About System Designers</div>
+            <h2 class="typed-title">Product-minded electronics for better living.</h2>
+            <p>
+              We are building a new engineering company focused on useful electronic products,
+              especially in health monitoring and caring applications. Our approach combines
+              compact hardware, embedded intelligence, reliable testing, and product design that
+              feels clear to use.
+            </p>
+          </div>
+
+          <div class="intro-media reveal">
+            <img class="parallax-img" src="img/about-us-image.png" alt="Electronic engineering workspace" />
+            <div class="intro-media-label">
+              <span>Engineering Studio</span>
+              <strong>Circuits, sensing, firmware, and useful product thinking.</strong>
+            </div>
+          </div>
+
+          <div class="focus-list">
+            <div class="focus-pill reveal">
+              <strong>Products to live your life</strong>
+              <span>Human centered electronic devices for practical daily use.</span>
+            </div>
+            <div class="focus-pill reveal">
+              <strong>We serve you for better life</strong>
+              <span>Purpose led design for monitoring, care, and community wellbeing.</span>
+            </div>
+            <div class="focus-pill reveal">
+              <strong>Life Improving services</strong>
+              <span>Engineering services that turn concepts into tested working systems.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="services-area">
+        <div class="container section-head reveal">
+          <div>
+            <div class="kicker">Services</div>
+            <h2 class="typed-title">From idea to electronic product.</h2>
+          </div>
+          <p>
+            Inspired by modern electronics studios, the service experience is direct:
+            product engineering, hardware, firmware, prototyping, and manufacturing support.
+          </p>
+        </div>
+
+        <div class="services-slider-shell">
+          <div class="swiper services-swiper reveal">
+            <div class="swiper-wrapper">
+              <article class="swiper-slide service-slide">
+                <img
+                  class="parallax-img"
+                  src="img/electronic-solution.png"
+                  alt="Engineer testing an electronic board"
+                />
+                <div class="service-content">
+                  <span class="service-index">01</span>
+                  <h3 class="typed-title">Electronic Product Engineering</h3>
+                  <p>
+                    Concept architecture, component planning, circuit development, and product
+                    decisions that prepare your idea for real use.
+                  </p>
+                  <div class="service-tags">
+                    <span>Architecture</span>
+                    <span>Component Selection</span>
+                    <span>Design Reviews</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="swiper-slide service-slide">
+                <img
+                  class="parallax-img"
+                  src="img/pcb-design-layout.png"
+                  alt="Electronic manufacturing and inspection"
+                />
+                <div class="service-content">
+                  <span class="service-index">02</span>
+                  <h3 class="typed-title">PCB Design & Prototyping</h3>
+                  <p>
+                    PCB layout, routing, prototype bring-up, validation, and production readiness
+                    for compact connected products.
+                  </p>
+                  <div class="service-tags">
+                    <span>PCB Layout</span>
+                    <span>Prototype Build</span>
+                    <span>Testing</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="swiper-slide service-slide">
+                <img
+                  class="parallax-img"
+                  src="img/embedded-stystem.png"
+                  alt="Embedded systems server lights"
+                />
+                <div class="service-content">
+                  <span class="service-index">03</span>
+                  <h3 class="typed-title">Embedded Systems & Firmware</h3>
+                  <p>
+                    Microcontroller logic, sensor interfaces, data capture, communication flows,
+                    and firmware that makes hardware behave with confidence.
+                  </p>
+                  <div class="service-tags">
+                    <span>MCU</span>
+                    <span>Sensors</span>
+                    <span>Control Logic</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="swiper-slide service-slide">
+                <img
+                  class="parallax-img"
+                  src="img/iot-solution.png"
+                  alt="Connected device interface"
+                />
+                <div class="service-content">
+                  <span class="service-index">04</span>
+                  <h3 class="typed-title">IoT & Wireless Connectivity</h3>
+                  <p>
+                    Connected device flows for monitoring, alerts, remote visibility, and practical
+                    data movement across everyday products.
+                  </p>
+                  <div class="service-tags">
+                    <span>IoT</span>
+                    <span>BLE/Wi-Fi</span>
+                    <span>Monitoring</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="swiper-slide service-slide">
+                <img
+                  class="parallax-img"
+                  src="img/smart-monitor.png"
+                  alt="Healthcare monitoring technology"
+                />
+                <div class="service-content">
+                  <span class="service-index">05</span>
+                  <h3 class="typed-title">Health Monitoring Products</h3>
+                  <p>
+                    Caring electronic products for vital sensing, assisted living, wellness insight,
+                    and body signal awareness.
+                  </p>
+                  <div class="service-tags">
+                    <span>MedTech</span>
+                    <span>Wearables</span>
+                    <span>Care Devices</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="swiper-control-row">
+            <div class="swiper-pagination"></div>
+            <div class="slider-buttons">
+              <div class="swiper-button-prev slider-button" aria-label="Previous service"></div>
+              <div class="swiper-button-next slider-button" aria-label="Next service"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="industries" class="industry-section">
+        <div class="container section-head reveal">
+          <div>
+            <div class="kicker">Industry Focus</div>
+            <h2 class="typed-title">Useful electronics where reliability matters.</h2>
+          </div>
+          <p>
+            A focused set of startup-friendly sectors where embedded systems, sensing, and
+            connected electronics can create meaningful product value.
+          </p>
+        </div>
+
+        <div class="container industry-grid">
+          <div class="industry-tabs reveal" aria-label="Industry selector">
+            <button
+              class="industry-tab active"
+              type="button"
+              data-title="Healthcare & Assisted Living"
+              data-chip="Human Care"
+              data-text="Health monitoring, senior care, wellness tracking, and assisted living products that translate body signals into simple, actionable information."
+              data-image="img/smart-monitor.png"
+            >
+              <span>Human Care</span>
+              <strong>Healthcare & Assisted Living</strong>
+            </button>
+            <button
+              class="industry-tab"
+              type="button"
+              data-title="Wearables & Personal Devices"
+              data-chip="Compact Sensing"
+              data-text="Low-power, compact sensing devices for body awareness, personal safety, fitness, and daily health insight."
+              data-image="img/smart-wearable.png"
+            >
+              <span>Compact Sensing</span>
+              <strong>Wearables & Personal Devices</strong>
+            </button>
+            <button
+              class="industry-tab"
+              type="button"
+              data-title="Industrial Monitoring"
+              data-chip="Machine Insight"
+              data-text="Sensor networks, controllers, and connected dashboards for uptime, safety, temperature, vibration, and machine health monitoring."
+              data-image="img/sensor-integratopm.png"
+            >
+              <span>Machine Insight</span>
+              <strong>Industrial Monitoring</strong>
+            </button>
+            <button
+              class="industry-tab"
+              type="button"
+              data-title="Smart Home & Community Care"
+              data-chip="Connected Living"
+              data-text="Electronic products for home safety, monitoring, energy awareness, and care focused environments."
+              data-image="img/smart-home.png"
+            >
+              <span>Connected Living</span>
+              <strong>Smart Home & Community Care</strong>
+            </button>
+            <button
+              class="industry-tab"
+              type="button"
+              data-title="Smart Agriculture"
+              data-chip="AgriTech"
+              data-text="Sensing, irrigation alerts, environmental monitoring, and connected farm electronics for better resource visibility."
+              data-image="img/smart-farm.png"
+            >
+              <span>AgriTech</span>
+              <strong>Smart Agriculture</strong>
+            </button>
+          </div>
+
+          <div class="industry-display reveal">
+            <img
+              class="industry-image parallax-img"
+              src="img/smart-monitor.png"
+              alt="Healthcare and assisted living technology"
+            />
+            <div class="industry-copy">
+              <span class="industry-chip">Human Care</span>
+              <h3 class="industry-title typed-title">Healthcare & Assisted Living</h3>
+              <p class="industry-text">
+                Health monitoring, senior care, wellness tracking, and assisted living products
+                that translate body signals into simple, actionable information.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="products">
+        <div class="container section-head reveal">
+          <div>
+            <div class="kicker">Product Direction</div>
+            <h2 class="typed-title">Electronic products with a care-first lens.</h2>
+          </div>
+          <p>
+            These are focused directions for the new startup website, ready to refine into specific
+            products as your catalogue grows.
+          </p>
+        </div>
+
+        <div class="container products-grid">
+          <article class="product-card reveal">
+            <img
+              class="parallax-img"
+              src="img/smart-monitor.png"
+              alt="Health monitoring display"
+            />
+            <div class="product-card-content">
+              <h3 class="typed-title">Body Signal Monitors</h3>
+              <p>Sensor based products for tracking vital signals, alerts, and personal wellbeing.</p>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <img
+              class="parallax-img"
+              src="img/smart-home.png"
+              alt="Small electronic robot and components"
+            />
+            <div class="product-card-content">
+              <h3 class="typed-title">Smart Care Devices</h3>
+              <p>Compact connected electronics for homes, schools, clinics, and assisted living spaces.</p>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <img
+              class="parallax-img"
+              src="img/cirucite-design.png"
+              alt="Electronic chips and circuit board"
+            />
+            <div class="product-card-content">
+              <h3 class="typed-title">Custom Embedded Boards</h3>
+              <p>Application-specific boards for sensing, control, wireless communication, and testing.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="founder" class="founder-section">
+        <div class="container founder-grid">
+          <div class="founder-visual reveal">
+            <img class="founder-photo parallax-img" src="img/Kalavathi_Photo.jpeg" alt="Mrs. R. Kalavathi" />
+            <div class="founder-label">
+              <strong>Mrs. R. Kalavathi</strong>
+              <span>Founder & Proprietor</span>
+            </div>
+          </div>
+
+          <div class="founder-copy reveal">
+            <div class="kicker">Founder</div>
+            <h2 class="typed-title">Education, care, and electronics in one mission.</h2>
+            <p>
+              Mrs. R. Kalavathi, Proprietor, holds a Master degree in Life Sciences and brings
+              25 years of school education experience. After retiring from formal teaching service,
+              she chose to serve the community by delivering electronic products for health
+              monitoring and caring.
+            </p>
+            <div class="quote-bar">
+              <span>Products to live your life</span>
+              <span>We serve you for better life</span>
+              <span>Life Improving services</span>
+              <span>Making your body talks to you</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <div class="container contact-grid">
+          <div class="contact-panel reveal">
+            <div class="kicker">Contact</div>
+            <h2 class="typed-title">Let us design the next useful electronic product.</h2>
+            <p>
+              Share your requirement for health monitoring products, PCB design, embedded systems,
+              IoT devices, or electronic product development. System Designers is ready to begin
+              the conversation from Coimbatore.
+            </p>
+            <div class="contact-actions">
+              <a class="btn btn-primary" href="tel:+919597804627">Call Now</a>
+              <a class="btn btn-ghost" href="mailto:info@systemdesigners.in?subject=Electronic%20Product%20Inquiry">Email Requirement</a>
+            </div>
+          </div>
+
+          <div class="gst-panel reveal">
+            <div class="info-row">
+              <span>Address</span>
+              <address>
+                30 SF.115/2B Alamu Nagar,<br />
+                Kovaipudur, Coimbatore - 641042
+              </address>
+            </div>
+            <div class="info-row">
+              <span>Mobile</span>
+              <strong><a href="tel:+919597804627">+91-95978-04627</a></strong>
+            </div>
+            <div class="info-row">
+              <span>GST No.</span>
+              <strong>33AGBPK2384G1ZO</strong>
+            </div>
+            <div class="info-row">
+              <span>Founder</span>
+              <strong>Mrs. R. Kalavathi, Proprietor</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-row">
+        <span>&copy; 2026 System Designers. Electronic Engineering & Health Monitoring Products.</span>
+        <span>Coimbatore, Tamil Nadu</span>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+      const servicesSwiper = new Swiper(".services-swiper", {
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 1.6,
+        spaceBetween: 18,
+        speed: 900,
+        grabCursor: true,
+        autoplay: {
+          delay: 3600,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          0: {
+            slidesPerView: 1.05,
+            spaceBetween: 12,
+          },
+          720: {
+            slidesPerView: 1.25,
+            spaceBetween: 16,
+          },
+          1024: {
+            slidesPerView: 1.6,
+            spaceBetween: 18,
+          },
+        },
+      });
+
+      const tabs = document.querySelectorAll(".industry-tab");
+      const industryImage = document.querySelector(".industry-image");
+      const industryChip = document.querySelector(".industry-chip");
+      const industryTitle = document.querySelector(".industry-title");
+      const industryText = document.querySelector(".industry-text");
+      let activeIndustry = 0;
+
+      function typeTitle(element, text, speed = 22) {
+        if (!element) return;
+
+        const titleText = text || element.dataset.typeText || element.textContent.trim();
+        if (element.typeTimer) {
+          window.clearTimeout(element.typeTimer);
+        }
+        element.dataset.typeText = titleText;
+        element.dataset.typing = "true";
+        element.classList.remove("is-typed");
+        element.textContent = "";
+
+        let index = 0;
+        const tick = () => {
+          element.textContent = titleText.slice(0, index);
+          index += 1;
+
+          if (index <= titleText.length) {
+            element.typeTimer = window.setTimeout(tick, speed);
+            return;
+          }
+
+          element.classList.add("is-typed");
+          element.dataset.typing = "false";
+        };
+
+        tick();
+      }
+
+      function setIndustry(index) {
+        const tab = tabs[index];
+        if (!tab) return;
+
+        tabs.forEach((item) => item.classList.remove("active"));
+        tab.classList.add("active");
+        activeIndustry = index;
+
+        industryImage.style.opacity = "0";
+        window.setTimeout(() => {
+          industryImage.src = tab.dataset.image;
+          industryImage.alt = tab.dataset.title;
+          industryChip.textContent = tab.dataset.chip;
+          typeTitle(industryTitle, tab.dataset.title, 18);
+          industryText.textContent = tab.dataset.text;
+          industryImage.style.opacity = "0.65";
+        }, 180);
+      }
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("mouseenter", () => setIndustry(index));
+        tab.addEventListener("focus", () => setIndustry(index));
+        tab.addEventListener("click", () => setIndustry(index));
+      });
+
+      window.setInterval(() => {
+        setIndustry((activeIndustry + 1) % tabs.length);
+      }, 4600);
+
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray(".reveal").forEach((item) => {
+          gsap.to(item, {
+            opacity: 1,
+            y: 0,
+            duration: 0.95,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 86%",
+              once: true,
+            },
+          });
+        });
+
+        gsap.utils.toArray(".typed-title").forEach((title) => {
+          title.dataset.typeText = title.dataset.typeText || title.textContent.trim();
+          title.textContent = "";
+
+          ScrollTrigger.create({
+            trigger: title,
+            start: "top 88%",
+            once: true,
+            onEnter: () => typeTitle(title, title.dataset.typeText),
+          });
+        });
+
+        gsap.utils.toArray(".metric, .focus-pill, .product-card, .industry-tab, .readout-item, .info-row, .service-tags span").forEach((item, index) => {
+          gsap.from(item, {
+            opacity: 0,
+            y: 24,
+            scale: 0.97,
+            duration: 0.75,
+            delay: Math.min(index * 0.025, 0.18),
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 92%",
+              once: true,
+            },
+          });
+        });
+
+        gsap.utils.toArray(".parallax-img").forEach((image) => {
+          const trigger = image.closest("section") || image.parentElement;
+          gsap.fromTo(
+            image,
+            { yPercent: -7 },
+            {
+              yPercent: 7,
+              ease: "none",
+              scrollTrigger: {
+                trigger,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.9,
+              },
+            }
+          );
+        });
+
+        gsap.to(".chip-board", {
+          rotate: 6,
+          y: -12,
+          duration: 5,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+
+        gsap.to(".hero-bg img", {
+          scale: 1.12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      } else {
+        document.querySelectorAll(".reveal").forEach((item) => {
+          item.style.opacity = "1";
+          item.style.transform = "none";
+        });
+        document.querySelectorAll(".typed-title").forEach((title) => {
+          title.classList.add("is-typed");
+        });
+      }
+    </script>
+  </body>
+</html>
